@@ -9,10 +9,10 @@ script:
   - docker run arghada/react-test npm test -- --coverage
 
 after_success:
-  - docker build arghada/multi-client ./client
-  - docker build arghada/multi-nginx ./nginx
-  - docker build arghada/multi-server ./server
-  - docker build arghada/multi-worker ./worker
+  - docker build -t arghada/multi-client ./client
+  - docker build -t arghada/multi-nginx ./nginx
+  - docker build -t arghada/multi-server ./server
+  - docker build -t arghada/multi-worker ./worker
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
